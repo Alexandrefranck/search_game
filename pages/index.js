@@ -44,11 +44,17 @@ export default function Home() {
     debouncedOnChange(e);
     setInputValue(e);
     SearchGames(e);
-  }, 800 );
-  
+  }, 800);
+
+  const getGoodQualityImg = (url) => {
+    const regex = /t_thumb/g;
+    const replacedStr = url.replace(regex, "t_720p");
+    return "https:" + replacedStr;
+  };
+
   return (
     <>
-      <main >
+      <main className="imagefond">
         <div className={style.contain}>
           <h1 className="p-2 mb-1 bg-dark text-white text-center">
             Et si vous découvriez un nouveau jeu?
@@ -62,12 +68,13 @@ export default function Home() {
           ></Select>
           <div className="row mt-3 justify-content-center gy-4">
             {randomGames.map((game, i) => (
-              
               <div key={i} className="col-md-2">
                 <div className="position-relative">
-                <Link href={"game/" + `${game.slug}`}>
-                <MyComponent url={game.cover.url}></MyComponent>
-                </Link>
+                  <Link href={"game/" + `${game.slug}`}>
+                    <MyComponent
+                      url={getGoodQualityImg(game.cover.url)}
+                    ></MyComponent>
+                  </Link>
                 </div>
               </div>
             ))}

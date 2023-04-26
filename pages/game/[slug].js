@@ -64,13 +64,15 @@ export default function Game() {
                 <div className={styles.summary}>
                   <p className="mt-3 fs-5">{allGameInfos.summary}</p>
                 </div>
-                <a
-                  href={allGameInfos.websites[0].url}
-                  target="_blank"
-                  className="btn btn-lg btn-primary mt-4"
-                >
-                  Télécharger le jeu
-                </a>
+                {allGameInfos.websites && (
+                  <a
+                    href={allGameInfos.websites[0].url}
+                    target="_blank"
+                    className="btn btn-lg btn-primary mt-4"
+                  >
+                    Télécharger le jeu
+                  </a>
+                )}
               </div>
               <div className="col-md-5">
                 <div
@@ -146,13 +148,14 @@ export default function Game() {
           <div className="container mt-5">
             <h3>Ressources :</h3>
             <ul>
-              {allGameInfos.websites.map((website, i) => (
-                <li key={i}>
-                  <a target="_blank" href={website.url}>
-                    {website.url}
-                  </a>
-                </li>
-              ))}
+              {allGameInfos.websites &&
+                allGameInfos.websites.map((website, i) => (
+                  <li key={i}>
+                    <a target="_blank" href={website.url}>
+                      {website.url}
+                    </a>
+                  </li>
+                ))}
             </ul>
           </div>
         </main>
