@@ -8,8 +8,6 @@ import { useRouter } from "next/router";
 import MyComponent from "./component/loadgames";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
   const router = useRouter();
   const [inputValue, setInputValue] = useState("");
@@ -67,17 +65,18 @@ export default function Home() {
             onChange={selectOption}
           ></Select>
           <div className="row mt-3 justify-content-center gy-4">
-            {randomGames.map((game, i) => (
-              <div key={i} className="col-md-2">
-                <div className="position-relative">
-                  <Link href={"game/" + `${game.slug}`}>
-                    <MyComponent
-                      url={getGoodQualityImg(game.cover.url)}
-                    ></MyComponent>
-                  </Link>
+            {randomGames &&
+              randomGames.map((game, i) => (
+                <div key={i} className="col-md-2">
+                  <div className="position-relative">
+                    <Link href={"game/" + `${game.slug}`}>
+                      <MyComponent
+                        url={getGoodQualityImg(game.cover.url)}
+                      ></MyComponent>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </main>
