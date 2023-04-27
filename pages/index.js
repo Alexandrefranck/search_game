@@ -64,10 +64,10 @@ export default function Home() {
             value={inputValue}
             onChange={selectOption}
           ></Select>
-          <div className="row mt-3 justify-content-center gy-4">
+          <div className="row mt-3 justify-content-center  gy-4">
             {randomGames &&
               randomGames.map((game, i) => (
-                <div key={i} className="col-md-2">
+                <div key={i} className="col-lg-2 col-md-4 col-sm-6">
                   <div className="position-relative">
                     <Link href={"game/" + `${game.slug}`}>
                       <MyComponent
